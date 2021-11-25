@@ -52,7 +52,6 @@ function getRandomMeal () {
     
     fetch(mealUrl).then(function(response) {
         if (response.ok) {
-            //console.log(response);
           response.json().then(function(data) {
             displayRandomMeal(data['meals'][0]);
           });
@@ -69,7 +68,6 @@ function getRandomDrink() {
 
     fetch(drinkUrl).then(function(response) {
         if (response.ok) {
-            // console.log(response)
           response.json().then(function(data) {
             displayRandomDrink(data['drinks'][0])
           });
@@ -86,20 +84,20 @@ function displayRandomMeal (mealDict) {
 
   var mealImg = mealDict['strMealThumb'];
   var meal = mealDict['strMeal'];
-  // var area = mealDict['strArea'];
+    // var area = mealDict['strArea'];
   var category = mealDict['strCategory'];
 
   $('.card-image img').attr("src", mealImg).attr("alt", "Picture of " + meal);
-  // $('.card-content img').attr("src", areaFlag).attr("alt", "Picture of " + area + 'Flag');
+    // $('.card-content img').attr("src", areaFlag).attr("alt", "Picture of " + area + 'Flag');
   $('.card-content .title').text(meal);
   $('.card-content .subtitle').text(category);
   
-  // var tags = mealDict['strTags'];
+    // var tags = mealDict['strTags'];
   var youtube = mealDict['strYoutube'];
 
   console.log('MEAL:', meal);
   console.log('INGREDIENTS:');
-  // build up ingredients tab
+    // build up ingredients tab
   var ingredients = {};
   $("#ingredients-content").html('<table class="table"><thead><tr><th>Ingredient</th><th>Measure</th></tr></thead><tbody></tbody></table>');
   for (let i = 1; i < 21; i++) {
