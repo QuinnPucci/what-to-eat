@@ -8,6 +8,9 @@ var curModal = 0;
 var savedMeals = {}; // {itemName: itemDict}
 var savedDrinks = {}; // {itemName: itemDict}
 var curRecipe = {}; // {itemName: itemDict}
+var favMealBtn = document.querySelector('#fav-meal-btn');
+var favDrinkBtn = document.querySelector('#fav-drink-btn');
+
 // GLOBAL VARIABLES END
 
 // Load from local storage to savedMeal and savedDrink
@@ -28,6 +31,16 @@ function loadRecipes() {
 loadRecipes();
 
 // ------------------------FUCNTIONS-------------------------------
+
+function displayFavMeal() {
+
+  $(".fav-meal-modal").show();
+}
+
+function displayFavDrink() {
+
+  $(".fav-drink-modal").show();
+}
 
 // helper function to save item to localStorage
 function saveCurRecipe() {
@@ -204,6 +217,15 @@ function displayDrink(drinkDict) {
 }
 // -----------end----------
 
+function hideFavDrink() {
+    $(".fav-drink-modal").hide();
+}
+
+function hideFavMeal() {
+  $(".fav-meal-modal").hide();
+}
+
+
 
 // ------------------------FUCNTIONS END-------------------------------
 
@@ -220,8 +242,24 @@ randomDrinkBtn.addEventListener("click", function () {
   getRandomDrink();
 });
 
+favDrinkBtn.addEventListener("click", function () {
+  displayFavDrink()
+});
+
+favMealBtn.addEventListener("click", function () {
+  displayFavMeal()
+});
+
 $('.modal-card-head .delete').click(function () {
   $(".modal").hide();
+});
+
+$('.fav-drink-modal-card-head .delete').click(function () {
+  hideFavDrink()
+});
+
+$('.fav-meal-modal-card-head .delete').click(function () {
+  hideFavMeal()
 });
 
 $('#try-another-btn').click(function () {
@@ -236,3 +274,6 @@ $('#save-btn').click(function () {
   saveCurRecipe();
 });
 // EVENT LISTENERS END
+
+hideFavDrink()
+hideFavMeal()

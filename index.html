@@ -37,6 +37,8 @@
         <div class="buttons-content has-text-centered mt-5">
           <button class="button is-primary is-rounded mx-2" id="meal-btn">Random Meal</button>
           <button class="button is-primary is-rounded mx-2" id=drink-btn>Random Drink</button>
+          <button class="button is-primary is-rounded mx-2" id=fav-meal-btn>Favorite Meal Recipes</button>
+          <button class="button is-primary is-rounded mx-2" id=fav-drink-btn>Favorite Drink Recipes</button>
         </div>
       </section>
     </div>
@@ -84,12 +86,62 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" id="save-btn">Save Recipe</button>
+        <button class="button is-success" id="save-btn">Add to Favorites</button>
         <button class="button" id="try-another-btn">Try Another</button>
       </footer>
     </div>
   </section>
   <!-- modal end-->
+  
+  <!-- favorites meals modal -->
+  <div class="fav-meal-modal">
+    <div class="fav-meal-modal-background"></div>
+    <div class="fav-meal-modal-card">
+      <header class="fav-meal-modal-card-head">
+        <p class="fav-modal-card-title">Modal title</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="fav-meal-modal-card-body">
+        
+        <div class="columns">
+            <div class="column col-1">
+              <!-- append favourites here -->
+            </div>
+            <div class="column col-2">
+              <!-- append favourites here -->
+            </div>
+
+      </section>
+      <footer class="fav-meal-modal-card-foot">
+      </footer>
+    </div>
+  </div>
+  <!-- favorite meals modal end -->
+
+    <!-- favorites drinks modal -->
+    <div class="fav-drink-modal">
+        <div class="fav-drink-modal-background"></div>
+        <div class="fav-drink-modal-card">
+          <header class="fav-drink-modal-card-head">
+            <p class="fav-modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="fav-drink-modal-card-body">
+            
+            <div class="columns">
+                <div class="column col-1">
+                  <!-- append favourites here -->
+                </div>
+                <div class="column col-2">
+                  <!-- append favourites here -->
+                </div>
+    
+          </section>
+          <footer class="fav-drink-modal-card-foot">
+          </footer>
+        </div>
+      </div>
+      <!-- favorite drinks modal end -->
 
   <!-- footer end-->
   <footer class="footer">
