@@ -58,7 +58,7 @@ function getRandomMeal() {
     if (response.ok) {
       //console.log(response);
       response.json().then(function (data) {
-        displayRandomMeal(data['meals'][0]);
+        displayMeal(data['meals'][0]);
       });
     } else {
       alert("Error");
@@ -76,7 +76,7 @@ function getRandomDrink() {
     if (response.ok) {
       // console.log(response)
       response.json().then(function (data) {
-        displayRandomDrink(data['drinks'][0])
+        displayDrink(data['drinks'][0])
       });
     } else {
       alert("Error")
@@ -114,7 +114,7 @@ function updateTabs(itemDict) {
 
 
 // function to display random meal
-function displayRandomMeal(mealDict) {
+function displayMeal(mealDict) {
   curModal = MEAL;
   console.log(mealDict);
 
@@ -136,7 +136,7 @@ function displayRandomMeal(mealDict) {
 
 
 // function to display random drink
-function displayRandomDrink(drinkDict) {
+function displayDrink(drinkDict) {
   curModal = DRINK;
   console.log(drinkDict);
 
