@@ -1,8 +1,13 @@
-body,
+/* body,
 html {
     height: 100%;
     margin: 0;
     text-align: center;
+} */
+
+html, body {
+    margin: 0;
+    height: 100%;
 }
 
 h1 {
@@ -30,6 +35,10 @@ footer a {
     font-size: 20px;
     color: black;
     ;
+}
+
+.modal-card-title {
+    margin-left: 20px;
 }
 
 .content .tab-content {
