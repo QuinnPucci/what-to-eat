@@ -98,6 +98,9 @@ function updateTabs(itemDict) {
     if (!ingredient) {
       break;
     }
+    if (!measure) {
+      measure = "Personal Preference";
+    }
     ingredients[ingredient] = measure;
     var line = ingredient + ': ' + measure;
     console.log(line);
