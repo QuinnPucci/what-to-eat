@@ -7,7 +7,7 @@ var randomDrinkBtn = document.querySelector('#drink-btn');
 // ------------------------FUCNTIONS-------------------------------
 
 // function to switch between tabs. NOTICE! REQUIRE modification with style.css
-function tabsWithContent () {
+function tabsWithContent() {
   let tabs = document.querySelectorAll('.tabs li');
   let tabsContent = document.querySelectorAll('.tab-content');
 
@@ -46,36 +46,36 @@ function tabsWithContent () {
 
 
 // function to restrieve random recipe data
-function getRandomMeal () {
-    var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
-    
-    fetch(mealUrl).then(function(response) {
-        if (response.ok) {
-            //console.log(response);
-          response.json().then(function(data) {
-            displayRandomMeal(data['meals'][0]);
-          });
-        } else {
-          alert("Error");
-        }
-    });
+function getRandomMeal() {
+  var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
+
+  fetch(mealUrl).then(function (response) {
+    if (response.ok) {
+      //console.log(response);
+      response.json().then(function (data) {
+        displayRandomMeal(data['meals'][0]);
+      });
+    } else {
+      alert("Error");
+    }
+  });
 }
 // ------function end-------
 
 // function to retrieve random cocktail data
 function getRandomDrink() {
-    var drinkUrl = "https://thecocktaildb.com/api/json/v1/1/random.php"
+  var drinkUrl = "https://thecocktaildb.com/api/json/v1/1/random.php"
 
-    fetch(drinkUrl).then(function(response) {
-        if (response.ok) {
-            // console.log(response)
-          response.json().then(function(data) {
-            displayRandomDrink(data['drinks'][0])
-          });
-        } else {
-            alert("Error")
-        }
-    });
+  fetch(drinkUrl).then(function (response) {
+    if (response.ok) {
+      // console.log(response)
+      response.json().then(function (data) {
+        displayRandomDrink(data['drinks'][0])
+      });
+    } else {
+      alert("Error")
+    }
+  });
 }
 
 // helper function for display tabs
@@ -106,7 +106,7 @@ function updateTabs(itemDict) {
 
 
 // function to display random meal
-function displayRandomMeal (mealDict) {
+function displayRandomMeal(mealDict) {
   console.log(mealDict);
 
   var mealImg = mealDict['strMealThumb'];
@@ -117,17 +117,16 @@ function displayRandomMeal (mealDict) {
   $('.card-content .title').text(meal);
   $('.card-content .subtitle').text(category);
 
-  var youtube = mealDict['strYoutube'];
-
   console.log('MEAL:', meal);
   updateTabs(mealDict);
 
+  // var youtube = mealDict['strYoutube'];
   $(".modal").show();
 }
 // -----------end----------
 
 // function to display random drink
-function displayRandomDrink (drinkDict) {
+function displayRandomDrink(drinkDict) {
   console.log(drinkDict);
 
   var drinkImg = drinkDict['strDrinkThumb'];
@@ -142,7 +141,6 @@ function displayRandomDrink (drinkDict) {
   updateTabs(drinkDict);
 
   $(".modal").show();
-  
 }
 // -----------end----------
 
@@ -151,15 +149,15 @@ function displayRandomDrink (drinkDict) {
 
 // EVENT LISTENERS
 
-randomMealBtn.addEventListener("click", function() {
+randomMealBtn.addEventListener("click", function () {
   console.log("random meal clicked");
   getRandomMeal();
 });
 
-randomDrinkBtn.addEventListener("click", function() {
-    console.log("random drink clicked");
-    getRandomDrink();
-    // modal.removeAttribute("id");
+randomDrinkBtn.addEventListener("click", function () {
+  console.log("random drink clicked");
+  getRandomDrink();
+  // modal.removeAttribute("id");
 });
 
 
