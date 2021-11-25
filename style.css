@@ -31,6 +31,12 @@ footer a {
     color: black;
     ;
 }
-#hide {
+
+.content .tab-content {
+    padding: 1rem;
     display: none;
+}
+
+.content .tab-content.is-active {
+    display: block;
 }
