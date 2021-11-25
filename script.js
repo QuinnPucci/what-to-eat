@@ -42,8 +42,29 @@ function getRandomDrink () {
 // -----------end----------
 
 // function to display random meal
-function displayRandomMeal (meal) {
-  console.log(meal);
+function displayRandomMeal (mealDict) {
+  console.log(mealDict);
+  
+  var area = mealDict['strArea'];
+  var category = mealDict['strCategory'];
+  var instructions = mealDict['strInstructions'];
+  var meal = mealDict['strMeal'];
+  var mealThumb = mealDict['strMealThumb'];
+  var tags = mealDict['strTags'];
+  var youtube = mealDict['strYoutube'];
+
+  console.log('MEAL:', meal);
+  console.log('INGREDIENTS:');
+  var ingredients = {};
+  let i = 1;
+  while (i < 21 && mealDict['strCategory' + i] != '') {
+    var ingredient = mealDict['strIngredient' + i];
+    var measure = mealDict['strMeasure' + i];
+
+    console.log(ingredient + ':', measure);
+    ingredients[ingredient] = measure;
+    i ++;
+  }
 }
 
 // function to display random meal
