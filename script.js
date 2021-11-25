@@ -11,7 +11,7 @@ var curRecipe = {}; // {itemName: itemDict}
 // GLOBAL VARIABLES END
 
 // Load from local storage to savedMeal and savedDrink
-function loadRecipes () {
+function loadRecipes() {
   savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
   savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
   // if nothing in localStorage, make it empty dict
@@ -30,7 +30,7 @@ loadRecipes();
 // ------------------------FUCNTIONS-------------------------------
 
 // helper function to save item to localStorage
-function saveCurRecipe () {
+function saveCurRecipe() {
   if (curModal === MEAL) {
     Object.assign(savedMeals, curRecipe);
     localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
@@ -42,13 +42,13 @@ function saveCurRecipe () {
   }
 }
 
-function removeMeal (itemName) {
+function removeMeal(itemName) {
   delete savedMeals[itemName];
   localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
   // need update table after remove
 }
 
-function removeDrink (itemName) {
+function removeDrink(itemName) {
   delete savedDrinks[itemName];
   localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
   // need update table after remove
