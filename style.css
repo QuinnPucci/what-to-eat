@@ -31,3 +31,6 @@ footer a {
     color: black;
     ;
 }
+#hide {
+    display: none;
+}

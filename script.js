@@ -2,6 +2,7 @@
 
 var randomMealBtn = document.querySelector('#meal-btn')
 var randomDrinkBtn = document.querySelector('#drink-btn')
+var modal = document.querySelector('.modal')
 
 // GLOBAL VARIABLES END
 
@@ -60,6 +61,8 @@ function displayRandomMeal () {
 randomMealBtn.addEventListener("click", function() {
   console.log("random meal clicked")
   getRandomMeal()
+  modal.removeAttribute("id")
+
 });
 
 randomDrinkBtn.addEventListener("click", function() {
