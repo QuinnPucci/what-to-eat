@@ -22,7 +22,7 @@ function getRandomMeal () {
         }
       });
 }
-// -----------end----------
+// ------function end-------
 
 // function to retrieve random cocktail data
 function getRandomDrink () {
@@ -40,13 +40,18 @@ function getRandomDrink () {
         }
       });
 }
-// -----------end----------
+// ------function end-------
 
 // function to display random meal
 function displayRandomMeal () {
-  
-}
 
+
+  for (var i = 0; i < meals.length; i++) {
+  
+  }
+
+}
+// ------function end-------
 
 // ------------------------FUCNTIONS END-------------------------------
 
