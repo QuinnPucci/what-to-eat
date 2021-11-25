@@ -2,6 +2,9 @@
 
 var randomMealBtn = document.querySelector('#meal-btn');
 var randomDrinkBtn = document.querySelector('#drink-btn');
+var MEAL = 1;
+var DRINK = 2;
+var curModal = 0;
 // GLOBAL VARIABLES END
 
 // ------------------------FUCNTIONS-------------------------------
@@ -107,6 +110,7 @@ function updateTabs(itemDict) {
 
 // function to display random meal
 function displayRandomMeal(mealDict) {
+  curModal = MEAL;
   console.log(mealDict);
 
   var mealImg = mealDict['strMealThumb'];
@@ -127,6 +131,7 @@ function displayRandomMeal(mealDict) {
 
 // function to display random drink
 function displayRandomDrink(drinkDict) {
+  curModal = DRINK;
   console.log(drinkDict);
 
   var drinkImg = drinkDict['strDrinkThumb'];
@@ -165,5 +170,11 @@ $('.modal-card-head .delete').click(function () {
   $(".modal").hide();
 })
 
-
+$('#try-another-btn').click(function () {
+  if (curModal === MEAL) {
+    getRandomMeal();
+  }else if (curModal === DRINK) {
+    getRandomDrink();
+  }
+})
 // EVENT LISTENERS END
