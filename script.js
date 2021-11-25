@@ -10,7 +10,8 @@ var curModal = 0;
 
 // ------------------------FUCNTIONS-------------------------------
 
-// function to switch between tabs. NOTICE! REQUIRE modification with style.css
+
+// function to switch between tabs
 function tabsWithContent() {
   let tabs = document.querySelectorAll('.tabs li');
   let tabsContent = document.querySelectorAll('.tab-content');
@@ -49,7 +50,7 @@ function tabsWithContent() {
 // -----------end----------
 
 
-// function to retrieve random recipe data
+// function to retrieve random meal recipe data
 function getRandomMeal() {
   var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
 
@@ -64,9 +65,10 @@ function getRandomMeal() {
     }
   });
 }
-// ------function end-------
+// -----------end----------
 
-// function to retrieve random cocktail data
+
+// function to retrieve random cocktail recipe data
 function getRandomDrink() {
   var drinkUrl = "https://thecocktaildb.com/api/json/v1/1/random.php"
 
@@ -81,13 +83,15 @@ function getRandomDrink() {
     }
   });
 }
+// -----------end----------
+
 
 // helper function for display tabs
 function updateTabs(itemDict) {
   console.log('INGREDIENTS:');
   // build up ingredients tab
   var ingredients = {};
-  $("#ingredients-content").html('<table class="table"><thead><tr><th>Ingredient</th><th>Measure</th></tr></thead><tbody></tbody></table>');
+  $("#ingredients-content").html('<table class="table"><thead><tr><th>Ingredients</th><th>Measurements</th></tr></thead><tbody></tbody></table>');
   for (let i = 1; i < 21; i++) {
     var ingredient = itemDict['strIngredient' + i];
     var measure = itemDict['strMeasure' + i];
@@ -106,7 +110,7 @@ function updateTabs(itemDict) {
 
   tabsWithContent();
 }
-// ------function end-------
+// -----------end----------
 
 
 // function to display random meal
@@ -130,6 +134,7 @@ function displayRandomMeal(mealDict) {
 }
 // -----------end----------
 
+
 // function to display random drink
 function displayRandomDrink(drinkDict) {
   curModal = DRINK;
@@ -150,7 +155,9 @@ function displayRandomDrink(drinkDict) {
 }
 // -----------end----------
 
+
 // ------------------------FUCNTIONS END-------------------------------
+
 
 // EVENT LISTENERS
 
