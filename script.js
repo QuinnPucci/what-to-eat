@@ -10,8 +10,47 @@ var savedDrinks = {}; // {itemName: itemDict}
 var curRecipe = {}; // {itemName: itemDict}
 var favMealBtn = document.querySelector('#fav-meal-btn');
 var favDrinkBtn = document.querySelector('#fav-drink-btn');
+var mealCol = document.querySelector('#meal-col-1');
 
 // GLOBAL VARIABLES END
+
+
+// ------------------------FUCNTIONS-------------------------------
+
+function displayFavMeal() {
+  $(".fav-meal-modal").show();
+  savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
+  savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
+
+  $('#meal-col-1').append(
+    $(document.createElement('button')).prop({
+        type: 'button',
+        innerHTML: "",
+        class: 'saved-meal'
+    })
+  );
+
+  $('.saved-meal').click(function () {
+    displayMeal()
+  });
+
+}
+
+function displayFavDrink() {
+  $(".fav-drink-modal").show();
+
+  $('#drink-col-1').append(
+    $(document.createElement('button')).prop({
+        type: 'button',
+        innerHTML: "",
+        class: 'saved-drink'
+    })
+  );
+
+  $('.saved-drink').click(function () {
+    displaydrink()
+  });
+}
 
 // Load from local storage to savedMeal and savedDrink
 function loadRecipes() {
@@ -27,20 +66,6 @@ function loadRecipes() {
   console.log(savedMeals);
   console.log(savedDrinks);
 };
-
-loadRecipes();
-
-// ------------------------FUCNTIONS-------------------------------
-
-function displayFavMeal() {
-
-  $(".fav-meal-modal").show();
-}
-
-function displayFavDrink() {
-
-  $(".fav-drink-modal").show();
-}
 
 // helper function to save item to localStorage
 function saveCurRecipe() {
@@ -217,13 +242,17 @@ function displayDrink(drinkDict) {
 }
 // -----------end----------
 
+// function that hides favorite drinks modal
 function hideFavDrink() {
     $(".fav-drink-modal").hide();
 }
+// -----------end----------
 
+// function that hides favorite drinks modal
 function hideFavMeal() {
   $(".fav-meal-modal").hide();
 }
+// -----------end----------
 
 
 
@@ -273,7 +302,18 @@ $('#try-another-btn').click(function () {
 $('#save-btn').click(function () {
   saveCurRecipe();
 });
+
+$('.saved-meal').click(function () {
+  displayMeal()
+});
+
+$('.saved-drink').click(function () {
+  displayDrink()
+});
+
+
 // EVENT LISTENERS END
 
 hideFavDrink()
 hideFavMeal()
+loadRecipes();
