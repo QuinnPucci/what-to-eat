@@ -28,17 +28,49 @@
                         <h1>Receipe Cookbook</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat
                             vel, interdum mattis neque.</p>
-                            <button id="meal-btn" class="button is-rounded"> Random Meal
-                              </button>
-                            <button id="drink-btn" class="button is-rounded"> Random Cocktail
+                        <div class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Modal title</p>
+                                    <button class="delete" aria-label="close"></button>
+
+                                </header>
+                                <section class="modal-card-body">
+                                    <!-- Content ... -->
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button is-success">Save changes</button>
+                                    <button class="button">Cancel</button>
+                                </footer>
+                            </div>
+                        </div>
+                        <button id="meal-btn" class="button is-rounded"> Random Meal
+                        </button>
+                        <button id="drink-btn" class="button is-rounded"> Random Cocktail
                             </button>
-                            <div class="field">
-                                <div class="control">
-                                    <textarea class="textarea is-small" placeholder="Small textarea"></textarea>
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea is-small" placeholder="Small textarea"></textarea>
                 </section>
                 </div>
                 <!-- Footer of page -->
-
+                <div class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Modal title</p>
+                            <button class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                            <!-- Content ... -->
+                        </section>
+                        <footer class="modal-card-foot">
+                            <button class="button is-success">Save changes</button>
+                            <button class="button">Cancel</button>
+                        </footer>
+                    </div>
+                </div>
 
         </main>
         <footer class="footer">
@@ -55,5 +87,3 @@
 
 
 </html>
-
-var randomMealBtn = document.querySelector(‘#meal-btn’) var randomDrinkBtn = document.querySelector(‘#drink-btn’)
