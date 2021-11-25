@@ -25,13 +25,15 @@ function displayFavMeal() {
   $('#meal-col-1').append(
     $(document.createElement('button')).prop({
         type: 'button',
-        innerHTML: "",
-        class: 'saved-meal'
+        innerHTML: "recipe title",
+        class: 'saved-meal',
+        id: savedMeals
     })
   );
 
   $('.saved-meal').click(function () {
-    displayMeal()
+    displayMeal(savedMeals)
+    hideFavMeal()
   });
 
 }
@@ -42,13 +44,15 @@ function displayFavDrink() {
   $('#drink-col-1').append(
     $(document.createElement('button')).prop({
         type: 'button',
-        innerHTML: "",
-        class: 'saved-drink'
+        innerHTML: "recipe title",
+        class: 'saved-drink',
+        id: savedDrinks
     })
   );
 
   $('.saved-drink').click(function () {
-    displaydrink()
+    displayDrink(savedDrinks)
+    hideFavDrink()
   });
 }
 
