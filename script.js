@@ -5,10 +5,54 @@ var randomDrinkBtn = document.querySelector('#drink-btn');
 var MEAL = 1;
 var DRINK = 2;
 var curModal = 0;
-
+var savedMeals = {}; // {itemName: itemDict}
+var savedDrinks = {}; // {itemName: itemDict}
+var curRecipe = {}; // {itemName: itemDict}
 // GLOBAL VARIABLES END
 
+// Load from local storage to savedMeal and savedDrink
+function loadRecipes () {
+  savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
+  savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
+  // if nothing in localStorage, make it empty dict
+  if (!savedMeals) {
+    savedMeals = {};
+  }
+  if (!savedDrinks) {
+    savedDrinks = {};
+  }
+  console.log(savedMeals);
+  console.log(savedDrinks);
+};
+
+loadRecipes();
+
 // ------------------------FUCNTIONS-------------------------------
+
+// helper function to save item to localStorage
+function saveCurRecipe () {
+  if (curModal === MEAL) {
+    Object.assign(savedMeals, curRecipe);
+    localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
+    console.log(JSON.parse(localStorage.getItem("savedMeals")));
+  } else if (curModal === DRINK) {
+    Object.assign(savedDrinks, curRecipe);
+    localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
+    console.log(JSON.parse(localStorage.getItem("savedDrinks")));
+  }
+}
+
+function removeMeal (itemName) {
+  delete savedMeals[itemName];
+  localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
+  // need update table after remove
+}
+
+function removeDrink (itemName) {
+  delete savedDrinks[itemName];
+  localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
+  // need update table after remove
+}
 
 
 // function to switch between tabs
@@ -133,6 +177,7 @@ function displayMeal(mealDict) {
   updateTabs(mealDict);
 
   // var youtube = mealDict['strYoutube'];
+  curRecipe[meal] = mealDict;
   $(".modal").show();
 }
 // -----------end----------
@@ -154,6 +199,7 @@ function displayDrink(drinkDict) {
   console.log('DRINK:', drink);
   updateTabs(drinkDict);
 
+  curRecipe[drink] = drinkDict;
   $(".modal").show();
 }
 // -----------end----------
@@ -176,7 +222,7 @@ randomDrinkBtn.addEventListener("click", function () {
 
 $('.modal-card-head .delete').click(function () {
   $(".modal").hide();
-})
+});
 
 $('#try-another-btn').click(function () {
   if (curModal === MEAL) {
@@ -184,6 +230,9 @@ $('#try-another-btn').click(function () {
   } else if (curModal === DRINK) {
     getRandomDrink();
   }
-})
+});
 
+$('#save-btn').click(function () {
+  saveCurRecipe();
+});
 // EVENT LISTENERS END
