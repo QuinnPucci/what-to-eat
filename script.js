@@ -9,47 +9,47 @@ var modal = document.querySelector('.modal')
 // ------------------------FUCNTIONS-------------------------------
 
 // function to restrieve random recipe data
-function getRandomMeal () {
+function getRandomMeal() {
     var mealUrl = "https://themealdb.com/api/json/v1/1/random.php"
 
     fetch(mealUrl).then(function(response) {
         if (response.ok) {
             console.log(response)
-          response.json().then(function(data) {
-            console.log(data)
-          });
+            response.json().then(function(data) {
+                console.log(data)
+            });
         } else {
-          alert("Error")
+            alert("Error")
         }
-      });
+    });
 }
 // ------function end-------
 
 // function to retrieve random cocktail data
-function getRandomDrink () {
+function getRandomDrink() {
     var drinkUrl = "https://thecocktaildb.com/api/json/v1/1/random.php"
 
     fetch(drinkUrl).then(function(response) {
         if (response.ok) {
             console.log(response)
-          response.json().then(function(data) {
-            console.log(data)
-            // call display function HERE
-          });
+            response.json().then(function(data) {
+                console.log(data)
+                    // call display function HERE
+            });
         } else {
-          alert("Error")
+            alert("Error")
         }
-      });
+    });
 }
 // ------function end-------
 
 // function to display random meal
-function displayRandomMeal () {
+function displayRandomMeal() {
 
 
-  for (var i = 0; i < meals.length; i++) {
-  
-  }
+    for (var i = 0; i < meals.length; i++) {
+
+    }
 
 }
 // ------function end-------
@@ -59,15 +59,16 @@ function displayRandomMeal () {
 // EVENT LISTENERS
 
 randomMealBtn.addEventListener("click", function() {
-  console.log("random meal clicked")
-  getRandomMeal()
-  modal.removeAttribute("id")
+    console.log("random meal clicked")
+    getRandomMeal()
+    modal.removeAttribute("id")
 
 });
 
 randomDrinkBtn.addEventListener("click", function() {
-  console.log("random drink clicked")
-  getRandomDrink()
+    console.log("random drink clicked")
+    getRandomDrink()
+    modal.removeAttribute("id")
 });
 
 
