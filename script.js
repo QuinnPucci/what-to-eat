@@ -56,14 +56,14 @@ function displayRandomMeal (mealDict) {
   console.log('MEAL:', meal);
   console.log('INGREDIENTS:');
   var ingredients = {};
-  let i = 1;
-  while (i < 21 && mealDict['strCategory' + i] != '') {
+  for (let i = 1; i < 21; i++) {
     var ingredient = mealDict['strIngredient' + i];
     var measure = mealDict['strMeasure' + i];
-
+    if (ingredient === "") {
+      break;
+    }
     console.log(ingredient + ':', measure);
     ingredients[ingredient] = measure;
-    i ++;
   }
 }
 // -----------end----------
