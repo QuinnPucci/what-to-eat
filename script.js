@@ -2,6 +2,7 @@
 
 var randomMealBtn = document.querySelector('#meal-btn');
 var randomDrinkBtn = document.querySelector('#drink-btn');
+
 // GLOBAL VARIABLES END
 
 // ------------------------FUCNTIONS-------------------------------
@@ -45,7 +46,7 @@ function tabsWithContent () {
 // -----------end----------
 
 
-// function to restrieve random recipe data
+// function to retrieve random recipe data
 function getRandomMeal () {
     var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
     
@@ -124,7 +125,7 @@ function displayRandomMeal (mealDict) {
 }
 // -----------end----------
 
-// function to display random meal
+// function to display random drink
 function displayRandomDrink(drink) {
   console.log(drink);
 }
@@ -150,6 +151,5 @@ randomDrinkBtn.addEventListener("click", function() {
 $('.modal-card-head .delete').click(function () {
   $(".modal").hide();
 })
-
 
 // EVENT LISTENERS END
