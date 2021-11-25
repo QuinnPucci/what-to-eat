@@ -1,24 +1,23 @@
 // GLOBAL VARIABLES
 
-var randomMealBtn = document.querySelector('#meal-btn')
-var randomDrinkBtn = document.querySelector('#drink-btn')
-
+var randomMealBtn = document.querySelector('#meal-btn');
+var randomDrinkBtn = document.querySelector('#drink-btn');
 // GLOBAL VARIABLES END
 
 // ------------------------FUCNTIONS-------------------------------
 
 // function to restrieve random recipe data
 function getRandomMeal () {
-    var mealUrl = "https://themealdb.com/api/json/v1/1/random.php"
-
+    var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
+    
     fetch(mealUrl).then(function(response) {
         if (response.ok) {
-            console.log(response)
+            //console.log(response);
           response.json().then(function(data) {
-            console.log(data)
+            displayRandomMeal(data['meals'][0]);
           });
         } else {
-          alert("Error")
+          alert("Error");
         }
       });
 }
@@ -30,9 +29,9 @@ function getRandomDrink () {
 
     fetch(drinkUrl).then(function(response) {
         if (response.ok) {
-            console.log(response)
+            // console.log(response)
           response.json().then(function(data) {
-            console.log(data)
+            displayRandomDrink(data['drinks'][0])
             // call display function HERE
           });
         } else {
@@ -43,8 +42,13 @@ function getRandomDrink () {
 // -----------end----------
 
 // function to display random meal
-function displayRandomMeal () {
-  
+function displayRandomMeal (meal) {
+  console.log(meal);
+}
+
+// function to display random meal
+function displayRandomDrink(drink) {
+  console.log(drink);
 }
 
 
@@ -54,7 +58,7 @@ function displayRandomMeal () {
 
 randomMealBtn.addEventListener("click", function() {
   console.log("random meal clicked")
-  getRandomMeal()
+  getRandomMeal();
 });
 
 randomDrinkBtn.addEventListener("click", function() {
