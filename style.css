@@ -1,0 +1,44 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: forestgreen;
+}
+
+#hero {
+    background-image: url("./assets/images/photo-1466637574441-749b8f19452f.jpeg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer a {
+    color: forestgreen;
+}
+
+.textarea {
+    opacity: 0.6;
+    outline: 3px;
+    border: 3px;
+    width: 50%;
+    font-size: 20px;
+    color: black;
+    ;
+}
+
+.modal-card-title {
+    margin-left: 20px;
+}
+
+.content .tab-content {
+    padding: 1rem;
+    display: none;
+}
+
+.content .tab-content.is-active {
+    display: block;
+}
