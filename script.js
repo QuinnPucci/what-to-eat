@@ -45,11 +45,13 @@ function getRandomDrink () {
 function displayRandomMeal (meal) {
   console.log(meal);
 }
+// -----------end----------
 
 // function to display random meal
 function displayRandomDrink(drink) {
   console.log(drink);
 }
+// -----------end----------
 
 
 // ------------------------FUCNTIONS END-------------------------------
