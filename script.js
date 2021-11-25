@@ -6,6 +6,45 @@ var randomDrinkBtn = document.querySelector('#drink-btn');
 
 // ------------------------FUCNTIONS-------------------------------
 
+// function to switch between tabs. NOTICE! REQUIRE modification with style.css
+function tabsWithContent () {
+  let tabs = document.querySelectorAll('.tabs li');
+  let tabsContent = document.querySelectorAll('.tab-content');
+
+  let deactvateAllTabs = function () {
+    tabs.forEach(function (tab) {
+      tab.classList.remove('is-active');
+    });
+  };
+
+  let hideTabsContent = function () {
+    tabsContent.forEach(function (tabContent) {
+      tabContent.classList.remove('is-active');
+    });
+  };
+
+  let activateTabsContent = function (tab) {
+    tabsContent[getIndex(tab)].classList.add('is-active');
+  };
+
+  let getIndex = function (el) {
+    return [...el.parentElement.children].indexOf(el);
+  };
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      deactvateAllTabs();
+      hideTabsContent();
+      tab.classList.add('is-active');
+      activateTabsContent(tab);
+    });
+  })
+
+  tabs[0].click();
+};
+// -----------end----------
+
+
 // function to restrieve random recipe data
 function getRandomMeal () {
     var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
@@ -44,27 +83,45 @@ function getRandomDrink () {
 // function to display random meal
 function displayRandomMeal (mealDict) {
   console.log(mealDict);
-  
-  var area = mealDict['strArea'];
-  var category = mealDict['strCategory'];
-  var instructions = mealDict['strInstructions'];
+
+  var mealImg = mealDict['strMealThumb'];
   var meal = mealDict['strMeal'];
-  var mealThumb = mealDict['strMealThumb'];
-  var tags = mealDict['strTags'];
+  // var area = mealDict['strArea'];
+  var category = mealDict['strCategory'];
+
+  $('.card-image img').attr("src", mealImg).attr("alt", "Picture of " + meal);
+  // $('.card-content img').attr("src", areaFlag).attr("alt", "Picture of " + area + 'Flag');
+  $('.card-content .title').text(meal);
+  $('.card-content .subtitle').text(category);
+  
+  // var tags = mealDict['strTags'];
   var youtube = mealDict['strYoutube'];
 
   console.log('MEAL:', meal);
   console.log('INGREDIENTS:');
+  // build up ingredients tab
   var ingredients = {};
+  $("#ingredients-content").html('<table class="table"><thead><tr><th>Ingredient</th><th>Measure</th></tr></thead><tbody></tbody></table>');
   for (let i = 1; i < 21; i++) {
     var ingredient = mealDict['strIngredient' + i];
     var measure = mealDict['strMeasure' + i];
     if (ingredient === "") {
       break;
     }
-    console.log(ingredient + ':', measure);
     ingredients[ingredient] = measure;
+    var line = ingredient + ': ' + measure;
+    console.log(line);
+    $("#ingredients-content tbody").append(`<tr><td>${ingredient}</td><td>${measure}</td></tr>`);
   }
+
+  var instructions = mealDict['strInstructions'];
+  $("#instruction-content").html("<span>" + instructions + "</span>");
+  console.log(instructions);
+
+  tabsWithContent();
+
+  $(".modal").show();
+  
 }
 // -----------end----------
 
@@ -88,6 +145,11 @@ randomDrinkBtn.addEventListener("click", function() {
   console.log("random drink clicked")
   getRandomDrink()
 });
+
+
+$('.modal-card-head .delete').click(function () {
+  $(".modal").hide();
+})
 
 
 // EVENT LISTENERS END
