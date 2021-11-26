@@ -16,6 +16,7 @@ var favDrinkBtn = document.querySelector('#fav-drink-btn');
 
 // ------------------------FUCNTIONS-------------------------------
 
+// function to display saved meals
 function displayFavMeal() {
   $(".fav-meal-modal").show();
   hideFavDrink()
@@ -25,7 +26,17 @@ function displayFavMeal() {
   for (let k in savedMeals) {
     mealID++;
     var elementID = "meal-" + mealID
-    $("#meal-col-1").append(`<button class="button is-primary m-1" id=${elementID}>${k}</button>`);
+      // create delete button
+    var deleteButton = $(`<button class='dlt-btn' id='${k}'>`)
+    deleteButton.text("X")
+    deleteButton.click(function(event){
+      event.preventDefault()
+      console.log(event.target.id)
+      removeMeal(event.target.id)
+    })
+    $("#meal-col-1").append(`<div id='${elementID}id'> <button class="button is-primary m-1" id=${elementID}>${k}</button> </div>`);
+      // append delete button too div with button to view recipe
+    $("#" + elementID + "id").append(deleteButton)
     $("#" + elementID).click(function () {
       console.log(1);
       displayMeal(savedMeals[k]);
@@ -33,7 +44,9 @@ function displayFavMeal() {
     });
   };
 }
+// -----------end----------
 
+// function to display saved drinks
 function displayFavDrink() {
   $(".fav-drink-modal").show();
   hideFavMeal()
@@ -43,7 +56,17 @@ function displayFavDrink() {
   for (let k in savedDrinks) {
     drinkID++;
     var elementID = "drink-" + drinkID;
-    $("#drink-col-1").append(`<button class="button is-primary m-1" id=${elementID}>${k}</button>`);
+      // create a delete button
+    var deleteButton = $(`<button class='dlt-btn' id='${k}'>`)
+    deleteButton.text("X")
+    deleteButton.click(function(event){
+      event.preventDefault()
+      console.log(event.target.id)
+      removeDrink(event.target.id)
+    })
+    $("#drink-col-1").append(`<div id='${elementID}id'> <button class="button is-primary m-1" id=${elementID}>${k}</button> </div>`);
+    // append delete button too div with button to view recipe
+    $("#" + elementID + "id").append(deleteButton)
     $("#" + elementID).click(function () {
       console.log(1);
       displayDrink(savedDrinks[k]);
@@ -51,6 +74,7 @@ function displayFavDrink() {
     });
   }
 }
+// -----------end----------
 
 // Load from local storage to savedMeal and savedDrink
 function loadRecipes() {
@@ -66,6 +90,7 @@ function loadRecipes() {
   console.log(savedMeals);
   console.log(savedDrinks);
 };
+// -----------end----------
 
 // helper function to save item to localStorage
 function saveCurRecipe() {
@@ -79,18 +104,25 @@ function saveCurRecipe() {
     console.log(JSON.parse(localStorage.getItem("savedDrinks")));
   }
 }
+// -----------end----------
 
+// function to delete saved meal
 function removeMeal(itemName) {
   delete savedMeals[itemName];
   localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
   // need update table after remove
+  displayFavMeal()
 }
+// -----------end----------
 
+// function to delete saved drink
 function removeDrink(itemName) {
   delete savedDrinks[itemName];
   localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
   // need update table after remove
+  displayFavDrink()
 }
+// -----------end----------
 
 
 // function to switch between tabs
@@ -255,7 +287,6 @@ function hideFavMeal() {
   $(".fav-meal-modal").hide();
 }
 // -----------end----------
-
 
 
 // ------------------------FUCNTIONS END-------------------------------

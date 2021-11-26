@@ -42,3 +42,8 @@ footer a {
 .content .tab-content.is-active {
     display: block;
 }
+
+
+#meal-col-1, #drink-col-1 {
+    height: 400px;
+}
