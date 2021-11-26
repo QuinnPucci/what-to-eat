@@ -10,7 +10,6 @@ var savedDrinks = {}; // {itemName: itemDict}
 var curRecipe = {}; // {itemName: itemDict}
 var favMealBtn = document.querySelector('#fav-meal-btn');
 var favDrinkBtn = document.querySelector('#fav-drink-btn');
-var mealCol = document.querySelector('#meal-col-1');
 
 // GLOBAL VARIABLES END
 
@@ -19,8 +18,8 @@ var mealCol = document.querySelector('#meal-col-1');
 
 function displayFavMeal() {
   $(".fav-meal-modal").show();
+  hideFavDrink()
   savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
-  savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
 
   $('#meal-col-1').append(
     $(document.createElement('button')).prop({
@@ -40,6 +39,8 @@ function displayFavMeal() {
 
 function displayFavDrink() {
   $(".fav-drink-modal").show();
+  hideFavMeal()
+  savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
 
   $('#drink-col-1').append(
     $(document.createElement('button')).prop({
