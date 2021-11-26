@@ -20,7 +20,7 @@ function displayFavMeal() {
   $(".fav-meal-modal").show();
   hideFavDrink()
   savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
-
+  $("#meal-col-1").html("");
   var mealID = 0;
   for (let k in savedMeals) {
     mealID++;
@@ -38,7 +38,7 @@ function displayFavDrink() {
   $(".fav-drink-modal").show();
   hideFavMeal()
   savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
-
+  $("#drink-col-1").html("");
   var drinkID = 0;
   for (let k in savedDrinks) {
     drinkID++;
@@ -215,6 +215,7 @@ function displayMeal(mealDict) {
   updateTabs(mealDict);
 
   // var youtube = mealDict['strYoutube'];
+  curRecipe = {};
   curRecipe[meal] = mealDict;
   $(".recipe-modal").show();
 }
@@ -237,6 +238,7 @@ function displayDrink(drinkDict) {
   console.log('DRINK:', drink);
   updateTabs(drinkDict);
 
+  curRecipe = {};
   curRecipe[drink] = drinkDict;
   $(".recipe-modal").show();
 }
