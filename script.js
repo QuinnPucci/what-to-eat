@@ -21,20 +21,17 @@ function displayFavMeal() {
   hideFavDrink()
   savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
 
-  $('#meal-col-1').append(
-    $(document.createElement('button')).prop({
-        type: 'button',
-        innerHTML: "recipe title",
-        class: 'saved-meal',
-        id: savedMeals
-    })
-  );
-
-  $('.saved-meal').click(function () {
-    displayMeal(savedMeals)
-    hideFavMeal()
-  });
-
+  var mealID = 0;
+  for (let k in savedMeals) {
+    mealID++;
+    var elementID = "meal-" + mealID
+    $("#meal-col-1").append(`<button class="button is-primary m-1" id=${elementID}>${k}</button>`);
+    $("#" + elementID).click(function () {
+      console.log(1);
+      displayMeal(savedMeals[k]);
+      hideFavMeal()
+    });
+  };
 }
 
 function displayFavDrink() {
@@ -42,19 +39,17 @@ function displayFavDrink() {
   hideFavMeal()
   savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
 
-  $('#drink-col-1').append(
-    $(document.createElement('button')).prop({
-        type: 'button',
-        innerHTML: "recipe title",
-        class: 'saved-drink',
-        id: savedDrinks
-    })
-  );
-
-  $('.saved-drink').click(function () {
-    displayDrink(savedDrinks)
-    hideFavDrink()
-  });
+  var drinkID = 0;
+  for (let k in savedDrinks) {
+    drinkID++;
+    var elementID = "drink-" + drinkID;
+    $("#drink-col-1").append(`<button class="button is-primary m-1" id=${elementID}>${k}</button>`);
+    $("#" + elementID).click(function () {
+      console.log(1);
+      displayDrink(savedDrinks[k]);
+      hideFavDrink()
+    });
+  }
 }
 
 // Load from local storage to savedMeal and savedDrink
@@ -221,7 +216,7 @@ function displayMeal(mealDict) {
 
   // var youtube = mealDict['strYoutube'];
   curRecipe[meal] = mealDict;
-  $(".modal").show();
+  $(".recipe-modal").show();
 }
 // -----------end----------
 
@@ -243,7 +238,7 @@ function displayDrink(drinkDict) {
   updateTabs(drinkDict);
 
   curRecipe[drink] = drinkDict;
-  $(".modal").show();
+  $(".recipe-modal").show();
 }
 // -----------end----------
 
