@@ -233,6 +233,10 @@ function updateTabs(itemDict) {
 // function to display random meal
 function displayMeal(mealDict) {
   curModal = MEAL;
+  if (curModal = MEAL) {
+    $("#fav-drink-2").hide()
+    $("#fav-meal-2").show()
+  }
   console.log(mealDict);
 
   var mealImg = mealDict['strMealThumb'];
@@ -257,6 +261,10 @@ function displayMeal(mealDict) {
 // function to display random drink
 function displayDrink(drinkDict) {
   curModal = DRINK;
+  if (curModal = DRINK) {
+    $("#fav-meal-2").hide()
+    $("#fav-drink-2").show()
+  }
   console.log(drinkDict);
 
   var drinkImg = drinkDict['strDrinkThumb'];
@@ -343,6 +351,14 @@ $('.saved-meal').click(function () {
 $('.saved-drink').click(function () {
   displayDrink()
 });
+
+$("#fav-meal-2").click(function() {
+  displayFavMeal()
+})
+
+$("#fav-drink-2").click(function() {
+  displayFavDrink()
+})
 
 
 // EVENT LISTENERS END
