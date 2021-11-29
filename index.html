@@ -37,6 +37,8 @@
         <div class="buttons-content has-text-centered mt-5">
           <button class="button is-primary is-rounded mx-2" id="meal-btn">Random Meal</button>
           <button class="button is-primary is-rounded mx-2" id=drink-btn>Random Drink</button>
+          <button class="button is-primary is-rounded mx-2" id=fav-meal-btn>Favorite Meal Recipes</button>
+          <button class="button is-primary is-rounded mx-2" id=fav-drink-btn>Favorite Drink Recipes</button>
         </div>
       </section>
     </div>
@@ -44,7 +46,7 @@
   <!--main body end-->
 
   <!-- modal -->
-  <section class="modal is-clipped">
+  <section class="modal is-clipped recipe-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -84,18 +86,63 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" id="save-btn">Save Recipe</button>
-        <button class="button" id="try-another-btn">Try Another</button>
+        <button class="button is-success" id="save-btn">Add to Favorites</button>
+        <button class="button" id="try-another-btn">New Random Recipe</button>
+        <button class="button" id="fav-drink-2">View Favorite Drink Recipes</button>
+        <button class="button" id="fav-meal-2">View Favorite Meal Recipes</button>
       </footer>
     </div>
   </section>
   <!-- modal end-->
+  
+  <!-- favorites meals modal -->
+  <div class="fav-meal-modal modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Saved Meal Recipes</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="columns">
+            <div class="column" id="meal-col-1">
+            </div>
+        </div>
+
+      </section>
+      <footer class="fav-meal-modal-card-foot">
+      </footer>
+    </div>
+  </div>
+  <!-- favorite meals modal end -->
+
+    <!-- favorites drinks modal -->
+    <div class="fav-drink-modal modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Saved Drink Recipes</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            
+            <div class="columns">
+                <div class="column" id="drink-col-1">
+                </div>
+            </div>
+    
+          </section>
+          <footer class="fav-drink-modal-card-foot">
+          </footer>
+        </div>
+      </div>
+      <!-- favorite drinks modal end -->
 
   <!-- footer end-->
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>Receipe Cookbook</strong>
+        <strong>Receipe Generator</strong>
       <p>by Group 7</p>.
     </div>
   </footer>
@@ -104,5 +151,4 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./script.js "></script>
 </body>
-
 </html>
