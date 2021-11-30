@@ -1,20 +1,58 @@
-html, body {
-    margin: 0;
-    height: 100%;
+.pop-up {
+    z-index: 1000;
+    text-align: center;
+    opacity: 90%;
 }
+
+.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+.notification {
+    animation:notification 0.5s 1;
+    -webkit-animation:notification 0.5s 1;
+    animation-fill-mode: forwards;
+    
+    animation-delay:2s;
+    -webkit-animation-delay:1.5s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes notification{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+@-webkit-keyframes notification{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+.notification {
+    padding: 5px 35px 6px 10px;
+}
+
+.notification .delete {
+    padding: 0px 1px;
+}
+
 
 h1 {
     font-family: 'Pacifico', cursive;
     color: forestgreen;
 }
 
-#hero {
+body {
     background-image: url("./assets/images/photo-1466637574441-749b8f19452f.jpeg");
-    height: 100%;
+    height: 950px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
+
 
 footer a {
     color: forestgreen;
@@ -46,4 +84,54 @@ footer a {
 
 #meal-col-1, #drink-col-1 {
     height: 400px;
+}
+
+.by{
+    margin: 0px;
+    /* background-color:white;
+       opacity: 0.6; */
+       /* background-color:rgba(197, 195, 214, 0.4); */
+  
+}
+
+.end,strong{
+    color: rgb(241, 236, 231);
+    font-size: 25px;
+}
+
+#meal-btn, #drink-btn,
+#fav-meal-btn, #fav-drink-btn{
+    font-weight: bolder;
+    color: rgb(7, 85, 7);
+    font-size: 20px;
+    display:flex;
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 5px;
+    opacity: 70%;
+    margin-bottom: 50px;
+    box-shadow: 5px 5px 5px #7c7b7b;
+}
+#meal-btn:hover, #drink-btn:hover,
+#fav-meal-btn:hover, #fav-drink-btn:hover {
+    box-shadow: 5px 5px 5px #cecece;
+    opacity: 100%;
+
+}
+.buttons-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} 
+
+.dlt-btn:hover {
+    background-color: red;
+}
+
+@media screen and (max-width:1228px)
+{
+    body{
+        height: 100%;
+    }
 }
