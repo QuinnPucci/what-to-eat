@@ -26,16 +26,16 @@ function displayFavMeal() {
   for (let k in savedMeals) {
     mealID++;
     var elementID = "meal-" + mealID
-      // create delete button
+    // create delete button
     var deleteButton = $(`<button class='dlt-btn delete' id='${k}'>`)
     deleteButton.text("X")
-    deleteButton.click(function(event){
+    deleteButton.click(function (event) {
       event.preventDefault()
       console.log(event.target.id)
       removeMeal(event.target.id)
     })
     $("#meal-col-1").append(`<div id='${elementID}id'> <button class="button is-primary m-1" id=${elementID}>${k}</button> </div>`);
-      // append delete button too div with button to view recipe
+    // append delete button too div with button to view recipe
     $("#" + elementID + "id").append(deleteButton)
     $("#" + elementID).click(function () {
       console.log(1);
@@ -56,10 +56,10 @@ function displayFavDrink() {
   for (let k in savedDrinks) {
     drinkID++;
     var elementID = "drink-" + drinkID;
-      // create a delete button
+    // create a delete button
     var deleteButton = $(`<button class='dlt-btn delete' id='${k}'>`)
     deleteButton.text("X")
-    deleteButton.click(function(event){
+    deleteButton.click(function (event) {
       event.preventDefault()
       console.log(event.target.id)
       removeDrink(event.target.id)
@@ -95,13 +95,23 @@ function loadRecipes() {
 // helper function to save item to localStorage
 function saveCurRecipe() {
   if (curModal === MEAL) {
+    if (Object.keys(curRecipe)[0] in savedMeals) {
+      $(".pop-up").html('<div class="notification is-warning">Meal Already Saved in the Favorite Recipes</div>');
+      return;
+    }
     Object.assign(savedMeals, curRecipe);
     localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
-    console.log(JSON.parse(localStorage.getItem("savedMeals")));
+    // console.log(JSON.parse(localStorage.getItem("savedMeals")));
+    $(".pop-up").html('<div class="notification is-success">Successfully Saved the Meal to Favorites</div>');
   } else if (curModal === DRINK) {
+    if (Object.keys(curRecipe)[0] in savedDrinks) {
+      $(".pop-up").html('<div class="notification is-warning">Drink Already Saved in the Favorite Recipes</div>');
+      return;
+    }
     Object.assign(savedDrinks, curRecipe);
     localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
-    console.log(JSON.parse(localStorage.getItem("savedDrinks")));
+    // console.log(JSON.parse(localStorage.getItem("savedDrinks")));
+    $(".pop-up").html('<div class="notification is-success">Successfully Saved the Drink to Favorites</div>');
   }
 }
 // -----------end----------
@@ -286,7 +296,7 @@ function displayDrink(drinkDict) {
 
 // function that hides favorite drinks modal
 function hideFavDrink() {
-    $(".fav-drink-modal").hide();
+  $(".fav-drink-modal").hide();
 }
 // -----------end----------
 
@@ -352,11 +362,11 @@ $('.saved-drink').click(function () {
   displayDrink()
 });
 
-$("#fav-meal-2").click(function() {
+$("#fav-meal-2").click(function () {
   displayFavMeal()
 })
 
-$("#fav-drink-2").click(function() {
+$("#fav-drink-2").click(function () {
   displayFavDrink()
 })
 
