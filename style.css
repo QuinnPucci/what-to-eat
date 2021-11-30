@@ -85,6 +85,10 @@ footer a {
     justify-content: center;
 } 
 
+.dlt-btn:hover {
+    background-color: red;
+}
+
 @media screen and (max-width:1228px)
 {
     body{

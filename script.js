@@ -27,7 +27,7 @@ function displayFavMeal() {
     mealID++;
     var elementID = "meal-" + mealID
       // create delete button
-    var deleteButton = $(`<button class='dlt-btn' id='${k}'>`)
+    var deleteButton = $(`<button class='dlt-btn delete' id='${k}'>`)
     deleteButton.text("X")
     deleteButton.click(function(event){
       event.preventDefault()
@@ -57,7 +57,7 @@ function displayFavDrink() {
     drinkID++;
     var elementID = "drink-" + drinkID;
       // create a delete button
-    var deleteButton = $(`<button class='dlt-btn' id='${k}'>`)
+    var deleteButton = $(`<button class='dlt-btn delete' id='${k}'>`)
     deleteButton.text("X")
     deleteButton.click(function(event){
       event.preventDefault()
