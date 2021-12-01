@@ -238,17 +238,15 @@ function displayFavModal(type) {
     itemID++;
     var elementID = typePrefix + itemID;
     // create delete button
-    var deleteButton = $(`<button class='dlt-btn delete dlt-rec-btn' id='${item}'>`);
+    var deleteButton = $(`<button class='dlt-btn delete dlt-rec-btn' id='del-${elementID}'>`);
     deleteButton.click(function (event) {
       event.preventDefault();
-      console.log(event.target.id);
-      removefavRecipe(type, event.target.id);
+      removefavRecipe(type, item);
     })
-    $("#fav-col-1").append(`<div id='${elementID}id'> <button class="button is-primary m-1" id=${elementID}>${item}</button> </div>`);
+    $("#fav-col-1").append(`<div id='${elementID}-div'> <button class="button is-primary m-1" id=${elementID}>${item}</button> </div>`);
     // append delete button too div with button to view recipe
-    $("#" + elementID + "id").append(deleteButton)
+    $("#" + elementID + "-div").append(deleteButton)
     $("#" + elementID).click(function () {
-      console.log(1);
       displayRecipes(savedItems[item]);
       $("#fav-modal").hide();
     });
