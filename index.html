@@ -55,7 +55,7 @@
   <!--main body end-->
 
   <!-- modal -->
-  <section class="modal is-clipped recipe-modal">
+  <section class="modal is-clipped" id="recipe-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -105,47 +105,25 @@
   <!-- modal end-->
 
   <!-- favorites meals modal -->
-  <div class="fav-meal-modal modal">
+  <div class="modal is-clipped" id="fav-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Saved Meal Recipes</p>
+        <p class="modal-card-title" id="fav-modal-title">Saved Meal/Drink Recipes</p>
         <button class="delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
         <div class="columns">
-          <div class="column" id="meal-col-1">
+          <div class="column" id="fav-col-1">
           </div>
         </div>
 
       </section>
-      <footer class="fav-meal-modal-card-foot">
+      <footer class="fav-modal-card-foot">
       </footer>
     </div>
   </div>
   <!-- favorite meals modal end -->
-
-  <!-- favorites drinks modal -->
-  <div class="fav-drink-modal modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Saved Drink Recipes</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-
-        <div class="columns">
-          <div class="column" id="drink-col-1">
-          </div>
-        </div>
-
-      </section>
-      <footer class="fav-drink-modal-card-foot">
-      </footer>
-    </div>
-  </div>
-  <!-- favorite drinks modal end -->
 
   <!-- footer end-->
   <footer class="by">

@@ -82,7 +82,7 @@ footer a {
 }
 
 
-#meal-col-1, #drink-col-1 {
+#fav-col-1 {
     height: 400px;
 }
 
@@ -100,7 +100,7 @@ footer a {
 }
 
 #meal-btn, #drink-btn,
-#fav-meal-btn, #fav-drink-btn{
+#fav-meal-btn, #fav-drink-btn {
     font-weight: bolder;
     color: rgb(7, 85, 7);
     font-size: 20px;
@@ -112,13 +112,14 @@ footer a {
     margin-bottom: 50px;
     box-shadow: 5px 5px 5px #7c7b7b;
 }
+
 #meal-btn:hover, #drink-btn:hover,
 #fav-meal-btn:hover, #fav-drink-btn:hover {
     box-shadow: 5px 5px 5px #cecece;
     opacity: 100%;
-
 }
-.buttons-content{
+
+.buttons-content {
     display: flex;
     flex-direction: column;
     align-items: center;
