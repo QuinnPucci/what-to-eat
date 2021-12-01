@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@1,700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./style.css" />
@@ -17,6 +18,15 @@
 <!--body begin-->
 
 <body>
+
+    <!-- pop up notification -->
+  <div class="pop-up sticky">
+    <!-- <div class="notification is-success">
+      <button class="delete"></button>
+      saved
+    </div> -->
+  </div>
+  <!-- pop up notification end -->
 
     <!-- header -->
     <header>
@@ -32,12 +42,10 @@
                 <div class="text-content has-text-centered">
                     <h1 class="">Recipe Generator</h1>
                     <div class="px-6">>
-
-
                     </div>
                 </div>
 
-                <div class="buttons-content has-text-centered mt-5">
+                <div class="buttons-content has-text-centered mt-5 main-buttons">
                     <button class="button is-primary is-rounded mx-2" id="meal-btn">Random Meal Recipe</button>
                     <button class="button is-primary is-rounded mx-2" id=drink-btn>Random Drink Recipe</button>
                     <button class="button is-primary is-rounded mx-2" id=fav-meal-btn>Favorite Meal Recipes</button>
@@ -49,7 +57,7 @@
     <!--main body end-->
 
     <!-- modal -->
-    <section class="modal is-clipped recipe-modal">
+    <section class="modal is-clipped" id="recipe-modal">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
@@ -98,54 +106,31 @@
     </section>
     <!-- modal end-->
 
-    <!-- favorites meals modal -->
-    <div class="fav-meal-modal modal">
+    <!-- favorites modal -->
+    <div class="modal is-clipped" id="fav-modal">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Saved Meal Recipes</p>
+                <p class="modal-card-title" id="fav-modal-title">Saved Meal/Drink Recipes</p>
                 <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
                 <div class="columns">
-                    <div class="column" id="meal-col-1">
+                    <div class="column" id="fav-col-1">
                     </div>
                 </div>
 
             </section>
-            <footer class="fav-meal-modal-card-foot">
+            <footer class="fav-modal-card-foot">
             </footer>
         </div>
     </div>
     <!-- favorite meals modal end -->
-
-    <!-- favorites drinks modal -->
-    <div class="fav-drink-modal modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Saved Drink Recipes</p>
-                <button class="delete" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-
-                <div class="columns">
-                    <div class="column" id="drink-col-1">
-                    </div>
-                </div>
-
-            </section>
-            <footer class="fav-drink-modal-card-foot">
-            </footer>
-        </div>
-    </div>
-    <!-- favorite drinks modal end -->
-
+    
     <!-- footer end-->
     <footer class="by">
         <div class="content has-text-centered">
-            <p class="end">Receipe Generator <br> Copyright © 2021 - All Rights Reserved by Group 7</br>
-            </p>.
+            <p class="end">Receipe Generator <br> Copyright © 2021 - All Rights Reserved by Group 7</br></p>
         </div>
     </footer>
     <!-- footer end-->

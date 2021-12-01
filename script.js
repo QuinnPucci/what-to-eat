@@ -1,5 +1,4 @@
 // GLOBAL VARIABLES
-
 var randomMealBtn = document.querySelector('#meal-btn');
 var randomDrinkBtn = document.querySelector('#drink-btn');
 var MEAL = 1;
@@ -10,71 +9,10 @@ var savedDrinks = {}; // {itemName: itemDict}
 var curRecipe = {}; // {itemName: itemDict}
 var favMealBtn = document.querySelector('#fav-meal-btn');
 var favDrinkBtn = document.querySelector('#fav-drink-btn');
-
 // GLOBAL VARIABLES END
 
 
 // ------------------------FUCNTIONS-------------------------------
-
-// function to display saved meals
-function displayFavMeal() {
-    $(".fav-meal-modal").show();
-    hideFavDrink()
-    savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
-    $("#meal-col-1").html("");
-    var mealID = 0;
-    for (let k in savedMeals) {
-        mealID++;
-        var elementID = "meal-" + mealID
-            // create delete button
-        var deleteButton = $(`<button class='dlt-btn delete' id='${k}'>`)
-        deleteButton.text("X")
-        deleteButton.click(function(event) {
-            event.preventDefault()
-            console.log(event.target.id)
-            removeMeal(event.target.id)
-        })
-        $("#meal-col-1").append(`<div id='${elementID}id'> <button class="button is-primary m-1" id=${elementID}>${k}</button> </div>`);
-        // append delete button too div with button to view recipe
-        $("#" + elementID + "id").append(deleteButton)
-        $("#" + elementID).click(function() {
-            console.log(1);
-            displayMeal(savedMeals[k]);
-            hideFavMeal()
-        });
-    };
-}
-// -----------end----------
-
-// function to display saved drinks
-function displayFavDrink() {
-    $(".fav-drink-modal").show();
-    hideFavMeal()
-    savedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
-    $("#drink-col-1").html("");
-    var drinkID = 0;
-    for (let k in savedDrinks) {
-        drinkID++;
-        var elementID = "drink-" + drinkID;
-        // create a delete button
-        var deleteButton = $(`<button class='dlt-btn delete' id='${k}'>`)
-        deleteButton.text("X")
-        deleteButton.click(function(event) {
-            event.preventDefault()
-            console.log(event.target.id)
-            removeDrink(event.target.id)
-        })
-        $("#drink-col-1").append(`<div id='${elementID}id'> <button class="button is-primary m-1" id=${elementID}>${k}</button> </div>`);
-        // append delete button too div with button to view recipe
-        $("#" + elementID + "id").append(deleteButton)
-        $("#" + elementID).click(function() {
-            console.log(1);
-            displayDrink(savedDrinks[k]);
-            hideFavDrink()
-        });
-    }
-}
-// -----------end----------
 
 // Load from local storage to savedMeal and savedDrink
 function loadRecipes() {
@@ -92,86 +30,40 @@ function loadRecipes() {
 };
 // -----------end----------
 
+
 // helper function to save item to localStorage
 function saveCurRecipe() {
     if (curModal === MEAL) {
-        Object.assign(savedMeals, curRecipe);
-        localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
-        console.log(JSON.parse(localStorage.getItem("savedMeals")));
+      if (Object.keys(curRecipe)[0] in savedMeals) {
+        $(".pop-up").html('<div class="notification is-warning">Meal Already Saved in the Favorite Recipes</div>');
+        return;
+      }
+      Object.assign(savedMeals, curRecipe);
+      localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
+      // console.log(JSON.parse(localStorage.getItem("savedMeals")));
+      $(".pop-up").html('<div class="notification is-success">Successfully Saved the Meal to Favorites</div>');
     } else if (curModal === DRINK) {
-        Object.assign(savedDrinks, curRecipe);
-        localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
-        console.log(JSON.parse(localStorage.getItem("savedDrinks")));
+      if (Object.keys(curRecipe)[0] in savedDrinks) {
+        $(".pop-up").html('<div class="notification is-warning">Drink Already Saved in the Favorite Recipes</div>');
+        return;
+      }
+      Object.assign(savedDrinks, curRecipe);
+      localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
+      // console.log(JSON.parse(localStorage.getItem("savedDrinks")));
+      $(".pop-up").html('<div class="notification is-success">Successfully Saved the Drink to Favorites</div>');
     }
-}
-// -----------end----------
-
-// function to delete saved meal
-function removeMeal(itemName) {
-    delete savedMeals[itemName];
-    localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
-    // need update table after remove
-    displayFavMeal()
-}
-// -----------end----------
-
-// function to delete saved drink
-function removeDrink(itemName) {
-    delete savedDrinks[itemName];
-    localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
-    // need update table after remove
-    displayFavDrink()
-}
-// -----------end----------
-
-
-// function to switch between tabs
-function tabsWithContent() {
-    let tabs = document.querySelectorAll('.tabs li');
-    let tabsContent = document.querySelectorAll('.tab-content');
-
-    let deactvateAllTabs = function() {
-        tabs.forEach(function(tab) {
-            tab.classList.remove('is-active');
-        });
-    };
-
-    let hideTabsContent = function() {
-        tabsContent.forEach(function(tabContent) {
-            tabContent.classList.remove('is-active');
-        });
-    };
-
-    let activateTabsContent = function(tab) {
-        tabsContent[getIndex(tab)].classList.add('is-active');
-    };
-
-    let getIndex = function(el) {
-        return [...el.parentElement.children].indexOf(el);
-    };
-
-    tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-            deactvateAllTabs();
-            hideTabsContent();
-            tab.classList.add('is-active');
-            activateTabsContent(tab);
-        });
-    })
-
-    tabs[0].click();
-};
-// -----------end----------
+  }
+  // -----------end----------
 
 
 // function to retrieve random meal recipe data
 function getRandomMeal() {
     var mealUrl = "https://themealdb.com/api/json/v1/1/random.php";
 
-    fetch(mealUrl).then(function(response) {
+    fetch(mealUrl).then(function (response) {
         if (response.ok) {
             //console.log(response);
-            response.json().then(function(data) {
+            response.json().then(function (data) {
                 displayMeal(data['meals'][0]);
             });
         } else {
@@ -186,10 +78,10 @@ function getRandomMeal() {
 function getRandomDrink() {
     var drinkUrl = "https://thecocktaildb.com/api/json/v1/1/random.php"
 
-    fetch(drinkUrl).then(function(response) {
+    fetch(drinkUrl).then(function (response) {
         if (response.ok) {
             // console.log(response)
-            response.json().then(function(data) {
+            response.json().then(function (data) {
                 displayDrink(data['drinks'][0])
             });
         } else {
@@ -197,6 +89,98 @@ function getRandomDrink() {
         }
     });
 }
+// -----------end----------
+
+
+// function to display random meal
+function displayMeal(mealDict) {
+    curModal = MEAL;
+    if (curModal = MEAL) {
+        $("#fav-drink-2").hide()
+        $("#fav-meal-2").show()
+    }
+
+    var mealImg = mealDict['strMealThumb'];
+    var meal = mealDict['strMeal'];
+    var category = mealDict['strCategory'];
+
+    $('.card-image img').attr("src", mealImg).attr("alt", "Picture of " + meal);
+    $('.card-content .title').text(meal);
+    $('.card-content .subtitle').text(category);
+
+    console.log('MEAL:', meal);
+    updateTabs(mealDict);
+
+    // var youtube = mealDict['strYoutube'];
+    curRecipe = {};
+    curRecipe[meal] = mealDict;
+    $("#recipe-modal").show();
+}
+// -----------end----------
+
+
+// function to display random drink
+function displayDrink(drinkDict) {
+    curModal = DRINK;
+    if (curModal = DRINK) {
+        $("#fav-meal-2").hide()
+        $("#fav-drink-2").show()
+    }
+
+    var drinkImg = drinkDict['strDrinkThumb'];
+    var drink = drinkDict['strDrink'];
+    var category = drinkDict['strCategory'];
+
+    $('.card-image img').attr("src", drinkImg).attr("alt", "Picture of " + drink);
+    $('.card-content .title').text(drink);
+    $('.card-content .subtitle').text(category);
+
+    console.log('DRINK:', drink);
+    updateTabs(drinkDict);
+
+    curRecipe = {};
+    curRecipe[drink] = drinkDict;
+    $("#recipe-modal").show();
+}
+// -----------end----------
+
+
+// function to switch between tabs
+function tabsWithContent() {
+    let tabs = document.querySelectorAll('.tabs li');
+    let tabsContent = document.querySelectorAll('.tab-content');
+
+    let deactvateAllTabs = function () {
+        tabs.forEach(function (tab) {
+            tab.classList.remove('is-active');
+        });
+    };
+
+    let hideTabsContent = function () {
+        tabsContent.forEach(function (tabContent) {
+            tabContent.classList.remove('is-active');
+        });
+    };
+
+    let activateTabsContent = function (tab) {
+        tabsContent[getIndex(tab)].classList.add('is-active');
+    };
+
+    let getIndex = function (el) {
+        return [...el.parentElement.children].indexOf(el);
+    };
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            deactvateAllTabs();
+            hideTabsContent();
+            tab.classList.add('is-active');
+            activateTabsContent(tab);
+        });
+    })
+
+    tabs[0].click();
+};
 // -----------end----------
 
 
@@ -216,85 +200,68 @@ function updateTabs(itemDict) {
             measure = "Personal Preference";
         }
         ingredients[ingredient] = measure;
-        var line = ingredient + ': ' + measure;
-        console.log(line);
         $("#ingredients-content tbody").append(`<tr><td>${ingredient}</td><td>${measure}</td></tr>`);
     }
 
     var instructions = itemDict['strInstructions'];
-    $("#instruction-content").html("<span>" + instructions + "</span>");
-    console.log(instructions);
+    $("#instruction-content").html("<p>" + instructions.replaceAll('\r\n\r\n', '\r\n').replaceAll('\r\n', '</br></br>') + "</p>");
 
     tabsWithContent();
 }
 // -----------end----------
 
 
-// function to display random meal
-function displayMeal(mealDict) {
-    curModal = MEAL;
-    if (curModal = MEAL) {
-        $("#fav-drink-2").hide()
-        $("#fav-meal-2").show()
+// function to display saved meals
+function displayFavModal(type) {
+  var savedItems = savedDrinks;
+  var typePrefix = "drink-";
+  var title = "Saved Drink Recipes";
+  var displayRecipes = displayDrink;
+  if (type === MEAL) {
+    savedItems = savedMeals;
+    typePrefix = "meal-";
+    title = "Saved Meal Recipes";
+    displayRecipes = displayMeal;
+  }
+  $("#fav-modal-title").text(title);
+
+  $("#fav-col-1").html("");
+  var itemID = 0;
+  for (let item in savedItems) {
+    itemID++;
+    var elementID = typePrefix + itemID;
+    // create delete button
+    var deleteButton = $(`<button class='dlt-btn delete dlt-rec-btn' id='del-${elementID}'>`);
+    deleteButton.click(function (event) {
+      event.preventDefault();
+      removefavRecipe(type, item);
+    })
+    $("#fav-col-1").append(`<div id='${elementID}-div'> <button class="button is-primary m-1" id=${elementID}>${item}</button> </div>`);
+    // append delete button too div with button to view recipe
+    $("#" + elementID + "-div").append(deleteButton)
+    $("#" + elementID).click(function () {
+      displayRecipes(savedItems[item]);
+      $("#fav-modal").hide();
+    });
+  };
+  $("#fav-modal").show();
+}
+// -----------end----------
+
+
+// function to delete saved meal/drink
+function removefavRecipe(type, itemName) {
+    if (type === MEAL) {
+      delete savedMeals[itemName];
+      localStorage.setItem("savedMeals", JSON.stringify(savedMeals));
+    } else if (type === DRINK) {
+      delete savedDrinks[itemName];
+      localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
     }
-    console.log(mealDict);
-
-    var mealImg = mealDict['strMealThumb'];
-    var meal = mealDict['strMeal'];
-    var category = mealDict['strCategory'];
-
-    $('.card-image img').attr("src", mealImg).attr("alt", "Picture of " + meal);
-    $('.card-content .title').text(meal);
-    $('.card-content .subtitle').text(category);
-
-    console.log('MEAL:', meal);
-    updateTabs(mealDict);
-
-    // var youtube = mealDict['strYoutube'];
-    curRecipe = {};
-    curRecipe[meal] = mealDict;
-    $(".recipe-modal").show();
-}
-// -----------end----------
-
-
-// function to display random drink
-function displayDrink(drinkDict) {
-    curModal = DRINK;
-    if (curModal = DRINK) {
-        $("#fav-meal-2").hide()
-        $("#fav-drink-2").show()
-    }
-    console.log(drinkDict);
-
-    var drinkImg = drinkDict['strDrinkThumb'];
-    var drink = drinkDict['strDrink'];
-    var category = drinkDict['strCategory'];
-
-    $('.card-image img').attr("src", drinkImg).attr("alt", "Picture of " + drink);
-    $('.card-content .title').text(drink);
-    $('.card-content .subtitle').text(category);
-
-    console.log('DRINK:', drink);
-    updateTabs(drinkDict);
-
-    curRecipe = {};
-    curRecipe[drink] = drinkDict;
-    $(".recipe-modal").show();
-}
-// -----------end----------
-
-// function that hides favorite drinks modal
-function hideFavDrink() {
-    $(".fav-drink-modal").hide();
-}
-// -----------end----------
-
-// function that hides favorite drinks modal
-function hideFavMeal() {
-    $(".fav-meal-modal").hide();
-}
-// -----------end----------
+    // need update table after remove
+    displayFavModal(type);
+  }
+  // -----------end----------
 
 
 // ------------------------FUCNTIONS END-------------------------------
@@ -302,67 +269,51 @@ function hideFavMeal() {
 
 // EVENT LISTENERS
 
-randomMealBtn.addEventListener("click", function() {
+randomMealBtn.addEventListener("click", function () {
     console.log("random meal clicked");
     getRandomMeal();
 });
 
-randomDrinkBtn.addEventListener("click", function() {
+randomDrinkBtn.addEventListener("click", function () {
     console.log("random drink clicked");
     getRandomDrink();
 });
 
-favDrinkBtn.addEventListener("click", function() {
-    displayFavDrink()
-});
-
-favMealBtn.addEventListener("click", function() {
-    displayFavMeal()
-});
-
-$('.modal-card-head .delete').click(function() {
-    $(".modal").hide();
-});
-
-$('.fav-drink-modal-card-head .delete').click(function() {
-    hideFavDrink()
-});
-
-$('.fav-meal-modal-card-head .delete').click(function() {
-    hideFavMeal()
-});
-
-$('#try-another-btn').click(function() {
-    if (curModal === MEAL) {
-        getRandomMeal();
-    } else if (curModal === DRINK) {
-        getRandomDrink();
-    }
-});
-
-$('#save-btn').click(function() {
+favMealBtn.addEventListener("click", function () {
+    displayFavModal(MEAL);
+  });
+  
+  favDrinkBtn.addEventListener("click", function () {
+    displayFavModal(DRINK);
+  });
+  
+  $('#save-btn').click(function () {
     saveCurRecipe();
-});
-
-$('.saved-meal').click(function() {
-    displayMeal()
-});
-
-$('.saved-drink').click(function() {
-    displayDrink()
-});
-
-$("#fav-meal-2").click(function() {
-    displayFavMeal()
-})
-
-$("#fav-drink-2").click(function() {
-    displayFavDrink()
-})
-
-
-// EVENT LISTENERS END
-
-hideFavDrink()
-hideFavMeal()
-loadRecipes();
+  });
+  
+  $('#try-another-btn').click(function () {
+    if (curModal === MEAL) {
+      getRandomMeal();
+    } else if (curModal === DRINK) {
+      getRandomDrink();
+    }
+  });
+  
+  $('#recipe-modal .delete').click(function () {
+    $("#recipe-modal").hide();
+  });
+  
+  $('#fav-modal .delete').click(function () {
+    $("#fav-modal").hide();
+  });
+  
+  $("#fav-meal-2").click(function () {
+    displayFavModal(MEAL);
+  })
+  
+  $("#fav-drink-2").click(function () {
+    displayFavModal(DRINK);
+  })
+  
+  // EVENT LISTENERS END
+  loadRecipes();
