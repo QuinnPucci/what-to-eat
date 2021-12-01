@@ -1,3 +1,4 @@
+// Testing Merge
 // GLOBAL VARIABLES
 
 var randomMealBtn = document.querySelector('#meal-btn');
