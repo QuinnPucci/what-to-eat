@@ -2,139 +2,158 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="./style.css" />
-  <title>Receipe Generator</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css" />
+    <title>Receipe Generator</title>
 </head>
 
 <!--body begin-->
 
 <body>
 
-  <!-- pop up notification -->
-  <div class="pop-up sticky">
-    <!-- <div class="notification is-success">
-      <button class="delete"></button>
-      saved
-    </div> -->
-  </div>
-  <!-- pop up notification end -->
+    <!-- header -->
+    <header>
 
-  <!-- header -->
-  <header>
+    </header>
+    <!-- header end-->
 
-  </header>
-  <!-- header end-->
+    <!--main body-->
+    <main id="hero">
+        <div class="bio-container container is-fluid">
+            <section class="section">
 
-  <!--main body-->
-  <main id="hero">
-    <div class="bio-container container is-fluid">
-      <section class="section">
+                <div class="text-content has-text-centered">
+                    <h1 class="">Recipe Generator</h1>
+                    <div class="px-6">>
+                        <p class="">Find and save everyday recipes on Group 7 website. Discover recipes to help you cook delicious meal with less stress and enjoy more.
+                        </p>
+                        <p class="">
+                            By clicking on the Random Drink or Random Meal button it will display the ingredients and instructions. Once the random meal or drink recipe has been generated, add them to your favorites for a quick find!</p>
+                    </div>
+                </div>
 
-        <div class="text-content has-text-centered">
-          <h1 class="is-size-1">Recipe Generator</h1>
-          <p class="is-size-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices
-            eleifend gravida,
-            nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio,
-            sollicitudin vel erat
-            vel, interdum mattis neque.</p>
+                <div class="buttons-content has-text-centered mt-5">
+                    <button class="button is-primary is-rounded mx-2" id="meal-btn">Random Meal</button>
+                    <button class="button is-primary is-rounded mx-2" id=drink-btn>Random Drink</button>
+                    <button class="button is-primary is-rounded mx-2" id=fav-meal-btn>Favorite Meal Recipes</button>
+                    <button class="button is-primary is-rounded mx-2" id=fav-drink-btn>Favorite Drink Recipes</button>
+                </div>
+            </section>
         </div>
+    </main>
+    <!--main body end-->
 
-        <div class="buttons-content has-text-centered mt-5">
-          <button class="button is-primary is-rounded mx-2" id="meal-btn">Random Meal</button>
-          <button class="button is-primary is-rounded mx-2" id=drink-btn>Random Drink</button>
-          <button class="button is-primary is-rounded mx-2" id=fav-meal-btn>Favorite Meal Recipes</button>
-          <button class="button is-primary is-rounded mx-2" id=fav-drink-btn>Favorite Drink Recipes</button>
+    <!-- modal -->
+    <section class="modal is-clipped recipe-modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title has-text-centered">Random Recipe</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4 has-text-centered">John Smith</p>
+                                <p class="subtitle is-6  has-text-centered">@johnsmith</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <div class="tabs">
+                                <ul>
+                                    <li><a>Ingredients</a></li>
+                                    <li><a>Instructions</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <section class="tab-content" id="ingredients-content">ingredients content</section>
+                                <section class="tab-content" id="instruction-content">instruction content</section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="save-btn">Add to Favorites</button>
+                <button class="button" id="try-another-btn">New Random Recipe</button>
+                <button class="button" id="fav-drink-2">View Favorite Drink Recipes</button>
+                <button class="button" id="fav-meal-2">View Favorite Meal Recipes</button>
+            </footer>
         </div>
-      </section>
-    </div>
-  </main>
-  <!--main body end-->
+    </section>
+    <!-- modal end-->
 
-  <!-- modal -->
-  <section class="modal is-clipped" id="recipe-modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title has-text-centered">Random Recipe</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-          </div>
+    <!-- favorites meals modal -->
+    <div class="fav-meal-modal modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Saved Meal Recipes</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="columns">
+                    <div class="column" id="meal-col-1">
+                    </div>
+                </div>
 
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-4 has-text-centered">John Smith</p>
-                <p class="subtitle is-6  has-text-centered">@johnsmith</p>
-              </div>
-            </div>
-
-            <div class="content">
-              <div class="tabs">
-                <ul>
-                  <li><a>Ingredients</a></li>
-                  <li><a>Instructions</a></li>
-                </ul>
-              </div>
-
-              <div>
-                <section class="tab-content" id="ingredients-content">ingredients content</section>
-                <section class="tab-content" id="instruction-content">instruction content</section>
-              </div>
-            </div>
-          </div>
+            </section>
+            <footer class="fav-meal-modal-card-foot">
+            </footer>
         </div>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success" id="save-btn">Add to Favorites</button>
-        <button class="button" id="try-another-btn">New Random Recipe</button>
-        <button class="button" id="fav-drink-2">View Favorite Drink Recipes</button>
-        <button class="button" id="fav-meal-2">View Favorite Meal Recipes</button>
-      </footer>
     </div>
-  </section>
-  <!-- modal end-->
+    <!-- favorite meals modal end -->
 
-  <!-- favorites meals modal -->
-  <div class="modal is-clipped" id="fav-modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title" id="fav-modal-title">Saved Meal/Drink Recipes</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="columns">
-          <div class="column" id="fav-col-1">
-          </div>
+    <!-- favorites drinks modal -->
+    <div class="fav-drink-modal modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Saved Drink Recipes</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="columns">
+                    <div class="column" id="drink-col-1">
+                    </div>
+                </div>
+
+            </section>
+            <footer class="fav-drink-modal-card-foot">
+            </footer>
         </div>
-
-      </section>
-      <footer class="fav-modal-card-foot">
-      </footer>
     </div>
-  </div>
-  <!-- favorite meals modal end -->
+    <!-- favorite drinks modal end -->
 
-  <!-- footer end-->
-  <footer class="by">
-    <div class="content has-text-centered">
-      <p class="end">Receipe Generator <br> Copyright © 2021 - All Rights Reserved by Group 7</br></p>.
-    </div>
-  </footer>
-  <!-- footer end-->
+    <!-- footer end-->
+    <footer class="by">
+        <div class="content has-text-centered">
+            <p class="end">Receipe Generator <br> Copyright © 2021 - All Rights Reserved by Group 7</br>
+            </p>.
+        </div>
+    </footer>
+    <!-- footer end-->
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="./script.js "></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./script.js "></script>
 </body>
 
 </html>
