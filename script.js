@@ -206,7 +206,7 @@ function updateTabs(itemDict) {
   }
 
   var instructions = itemDict['strInstructions'];
-  $("#instruction-content").html("<p>" + instructions.replaceAll('\r\n', '</br>') + "</p>");
+  $("#instruction-content").html("<p>" + instructions.replaceAll('\r\n\r\n', '\r\n').replaceAll('\r\n', '</br></br>') + "</p>");
 
   tabsWithContent();
 }
