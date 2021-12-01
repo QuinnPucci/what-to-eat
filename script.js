@@ -319,3 +319,5 @@ $("#fav-drink-2").click(function () {
 
 // EVENT LISTENERS END
 loadRecipes();
+
+// Testing merge.
