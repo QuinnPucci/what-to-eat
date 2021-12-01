@@ -1,5 +1,4 @@
 // GLOBAL VARIABLES
-
 var randomMealBtn = document.querySelector('#meal-btn');
 var randomDrinkBtn = document.querySelector('#drink-btn');
 var MEAL = 1;
@@ -10,7 +9,6 @@ var savedDrinks = {}; // {itemName: itemDict}
 var curRecipe = {}; // {itemName: itemDict}
 var favMealBtn = document.querySelector('#fav-meal-btn');
 var favDrinkBtn = document.querySelector('#fav-drink-btn');
-
 // GLOBAL VARIABLES END
 
 
@@ -101,7 +99,7 @@ function displayMeal(mealDict) {
     $("#fav-drink-2").hide()
     $("#fav-meal-2").show()
   }
-  console.log(mealDict);
+  // console.log(mealDict);
 
   var mealImg = mealDict['strMealThumb'];
   var meal = mealDict['strMeal'];
@@ -129,7 +127,7 @@ function displayDrink(drinkDict) {
     $("#fav-meal-2").hide()
     $("#fav-drink-2").show()
   }
-  console.log(drinkDict);
+  // console.log(drinkDict);
 
   var drinkImg = drinkDict['strDrinkThumb'];
   var drink = drinkDict['strDrink'];
@@ -204,14 +202,11 @@ function updateTabs(itemDict) {
       measure = "Personal Preference";
     }
     ingredients[ingredient] = measure;
-    var line = ingredient + ': ' + measure;
-    console.log(line);
     $("#ingredients-content tbody").append(`<tr><td>${ingredient}</td><td>${measure}</td></tr>`);
   }
 
   var instructions = itemDict['strInstructions'];
-  $("#instruction-content").html("<span>" + instructions + "</span>");
-  console.log(instructions);
+  $("#instruction-content").html("<p>" + instructions.replaceAll('\r\n', '</br>') + "</p>");
 
   tabsWithContent();
 }
