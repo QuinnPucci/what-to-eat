@@ -1,4 +1,4 @@
-##Recipe Generator
+Recipe Generator
 
 https://quinnpucci.github.io/what-to-eat/
 
