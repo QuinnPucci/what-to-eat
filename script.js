@@ -263,7 +263,7 @@ function displayMeal(mealDict) {
   // var youtube = mealDict['strYoutube'];
   curRecipe = {};
   curRecipe[meal] = mealDict;
-  $(".recipe-modal").show();
+  $("#recipe-modal").show();
 }
 // -----------end----------
 
@@ -290,7 +290,7 @@ function displayDrink(drinkDict) {
 
   curRecipe = {};
   curRecipe[drink] = drinkDict;
-  $(".recipe-modal").show();
+  $("#recipe-modal").show();
 }
 // -----------end----------
 
@@ -330,16 +330,18 @@ favMealBtn.addEventListener("click", function () {
   displayFavMeal()
 });
 
-$('.modal-card-head .delete').click(function () {
-  $(".modal").hide();
+$('#recipe-modal .delete').click(function () {
+  $("#recipe-modal").hide();
 });
 
-$('.fav-drink-modal-card-head .delete').click(function () {
-  hideFavDrink()
+$('.fav-drink-modal .delete').click(function () {
+  console.log('fav drink del');
+  hideFavDrink();
 });
 
-$('.fav-meal-modal-card-head .delete').click(function () {
-  hideFavMeal()
+$('.fav-meal-modal .delete').click(function () {
+  console.log('fav meal del');
+  hideFavMeal();
 });
 
 $('#try-another-btn').click(function () {
