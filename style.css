@@ -116,7 +116,8 @@ strong {
 #meal-btn:hover,
 #drink-btn:hover,
 #fav-meal-btn:hover,
-#fav-drink-btn:hover {
+#fav-drink-btn:hover,
+#search-btn:hover  {
     box-shadow: 5px 5px 5px #cecece;
     opacity: 100%;
 }
@@ -130,6 +131,42 @@ strong {
 
 .dlt-btn:hover {
     background-color: red;
+}
+
+
+#search-container {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+#search-value {
+    width: 40%;
+    height: 50px;
+    border-radius: 9999px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+#search-btn {
+    width: 250px;
+    margin: 10px auto;
+    height: 40px;
+    background-color: #00d1b2;
+    color: rgb(7, 85, 7);
+    font-weight: bolder;
+    font-size: 20px;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    opacity: 70%;
+    border-radius: 9999px;
+}
+
+#no-meal {
+    text-align: center;
+    color: rgb(248, 241, 242);
+    font-size: 35px;
+    font-weight: bolder;
 }
 
 

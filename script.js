@@ -264,6 +264,72 @@ function removefavRecipe(type, itemName) {
   // -----------end----------
 
 
+  // ------------------------FUCNTIONS-------------------------------
+
+// function to search by meal
+function getMealBySearch(searchedMeal) {
+  fetch('https://themealdb.com/api/json/v1/1/search.php?s=' + searchedMeal)
+  .then((res) => res.json())
+  .then((data) => {
+    // console.log('search', data)
+    if (data.meals === null) {
+      // document.getElementById('no-meal').textContent = "No recipes found"
+      return
+    } else {
+      document.getElementById('no-meal').textContent = ""
+      displayMeal(data['meals'][0])
+    }
+  })
+}
+
+// if meal is not found display the text "No recipes found"
+document.getElementById('search-btn').addEventListener('click', function() {
+
+  var meal = document.getElementById('search-value').value
+  if (meal === "") {
+    // document.getElementById('no-meal').textContent = "No recipes found"
+    return
+  } else {
+    document.getElementById('no-meal').textContent = ""
+    getMealBySearch(meal)
+  }
+})
+// -----------end----------
+
+// ------------------------FUCNTIONS-------------------------------
+
+// function to search by drink
+function getCocktailBySearch(searchedDrink) {
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + searchedDrink)
+  .then((res) => res.json())
+  .then((data) => {
+    // console.log('search', data)
+    if (data.drinks === null) {
+      // document.getElementById('no-meal').textContent = "No recipes found"
+      return
+    } else {
+      document.getElementById('no-meal').textContent = ""
+      displayDrink(data['drinks'][0])
+    }
+  })
+}
+
+// if drink is not found display the text "No recipes found"
+document.getElementById('search-btn').addEventListener('click', function() {
+
+  var drink = document.getElementById('search-value').value
+  if (drink === "") {
+    // document.getElementById('no-meal').textContent = "No recipes found"
+    return
+  } else {
+    document.getElementById('no-meal').textContent = ""
+    getCocktailBySearch(drink)
+  }
+})
+
+// -----------end----------
+
+
 // ------------------------FUCNTIONS END-------------------------------
 
 
