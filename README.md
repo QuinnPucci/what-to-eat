@@ -2,4 +2,6 @@ Recipe Generator
 
 https://quinnpucci.github.io/what-to-eat/
 
-![Screen Shot 2021-11-30 at 09 49 47 (2)](https://user-images.githubusercontent.com/91157851/144091299-0cb256e0-4e4d-46ec-a35a-e532d63146cd.png)
+
+![new page look](https://user-images.githubusercontent.com/91926452/144762855-cf4ccd3f-82a9-4648-9d7b-69743e8fe0b7.JPG)
+

@@ -282,7 +282,7 @@ function getMealBySearch(searchedMeal) {
   })
 }
 
-// if meal is not found display the text "No recipes found"
+// if meal is not found return it"
 document.getElementById('search-btn').addEventListener('click', function() {
 
   var meal = document.getElementById('search-value').value
@@ -314,7 +314,7 @@ function getCocktailBySearch(searchedDrink) {
   })
 }
 
-// if drink is not found display the text "No recipes found"
+// if drink is not found return it"
 document.getElementById('search-btn').addEventListener('click', function() {
 
   var drink = document.getElementById('search-value').value
